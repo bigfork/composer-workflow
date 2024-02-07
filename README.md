@@ -1,3 +1,7 @@
+# forked! to add support for auth.json
+
+Grabs username + password from secrets and outputs them in an auth.json for Composer to use.
+
 # composer update workflow (reusable)
 
 Run `composer update` and create pull request.

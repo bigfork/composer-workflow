@@ -38,6 +38,8 @@ on:
     secrets:
       token:
         required: true
+      auth:
+        required: false
 
 jobs:
   composer_update_job:
@@ -52,6 +54,15 @@ jobs:
           php-version: ${{ inputs.php }}
           extensions: ${{ inputs.extensions }}
           coverage: none
+      - name: Setup auth.json
+        shell: bash
+        env:
+          COMPOSER_AUTH: ${{ secrets.auth }}
+        working-directory: ${{ inputs.composer-path }}
+        run: |
+          if [ -n "$COMPOSER_AUTH" ]; then
+            echo "$COMPOSER_AUTH" > auth.json
+          fi
       - name: Install Composer dependencies
         working-directory: ${{ inputs.composer-path }}
         run: composer install --no-interaction --no-progress --prefer-dist --optimize-autoloader
