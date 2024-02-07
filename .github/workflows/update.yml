@@ -88,6 +88,9 @@ jobs:
           committer: ${{ inputs.git-name }} <${{ inputs.git-email }}>
           author: ${{ inputs.git-name }} <${{ inputs.git-email }}>
           title: ${{ inputs.title }}
-          body: ${{ steps.composer.outputs.output }}
+          body: |
+            ```
+            ${{ steps.composer.outputs.output }}
+            ```
           add-paths: |
             *.lock
