@@ -63,9 +63,9 @@ jobs:
           if [ -n "$COMPOSER_AUTH" ]; then
             echo "$COMPOSER_AUTH" > auth.json
           fi
-      - name: Install Composer dependencies
-        working-directory: ${{ inputs.composer-path }}
-        run: composer install --no-interaction --no-progress --prefer-dist --optimize-autoloader
+     # - name: Install Composer dependencies
+     #   working-directory: ${{ inputs.composer-path }}
+     #   run: composer install --no-interaction --no-progress --prefer-dist --optimize-autoloader
       - name: Composer update
         id: composer
         uses: actions/github-script@v6 #https://github.com/actions/github-script
